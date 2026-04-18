@@ -7,18 +7,20 @@ from datetime import datetime, timezone, timedelta
 
 import aiohttp
 
-import secrets
-
 from dotenv import load_dotenv
 from os import getenv
 
 from database.database import SessionDep
 from database.models import User
 
+from utils.user import UserControl
+
 load_dotenv()
 
 JWT_SECRET_KEY = getenv('JWT_SECRET_KEY')
 JWT_ALGORITHM = getenv('JWT_ALGORITHM')
+
+user = UserControl()
 
 class Auth:
 
@@ -117,7 +119,7 @@ class Auth:
 
         await Auth.register_user(DATA_TO_SIGNIN, session)
 
-        SESSION_ID, CSRF_TOKEN = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
+        SESSION_ID, CSRF_TOKEN = await user.create_session(FIRST_EMAIL, session)
 
         CREDENTIALS = await Auth.give_credentials(FIRST_EMAIL)
 
