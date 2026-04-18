@@ -168,8 +168,6 @@ async def get_change_password_confirmation_route(data: ChangePasswordConfirmatio
 async def send_two_factor_code(data: SendTwoFactorCodeSchema, session: sessionDep):
     random_code = await generate_email_code()
 
-    print(random_code)
-
     user_data = await user.get_user_by_email_or_username(data.emailOrUsername, session)
 
     if not user_data:

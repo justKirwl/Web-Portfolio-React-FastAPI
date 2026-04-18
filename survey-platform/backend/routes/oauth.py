@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Request, status
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import RedirectResponse
 
 from other.oauth_settings import oauth
 from database.database import sessionDep

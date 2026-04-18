@@ -14,7 +14,7 @@ export default function SurveyWrapper({ children }: Props) {
   useEffect(() => {
     if (isFetched.current) return
     
-    fetchSurvey(params.id)
+    fetchSurvey(params.id!)
 
     isFetched.current = true
   }, [params.id, isFetched])
