@@ -1,0 +1,12 @@
+[project]
+name = "fastapi-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ctransformers>=0.2.27",
+    "fastapi[standard]>=0.135.3",
+    "tokenizers>=0.22.2",
+    "uvicorn>=0.44.0",
+]

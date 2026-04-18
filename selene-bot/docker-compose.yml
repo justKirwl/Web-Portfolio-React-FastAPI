@@ -1,0 +1,49 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - redis_container
+      - postgresql
+
+  ai-server:
+    build:
+      context: ./fastapi_ai
+      dockerfile: ./dockerfile
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./fastapi_ai/.env
+    
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./dockerfile
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env
+
+  redis_container:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  postgresql:
+    image: postgres:14.17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: rubik_ai_database
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

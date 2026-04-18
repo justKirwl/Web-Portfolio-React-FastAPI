@@ -1,0 +1,7 @@
+plan.txt
+*.env
+*.venv
+__pycache__
+*.pyc
+
+hosting_info.txt

@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+npm-debug.log
+dist/
+
+# Git
+.git/
+.gitignore
+
+# Other
+.DS_Store
+.env

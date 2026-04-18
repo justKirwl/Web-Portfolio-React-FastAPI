@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import '@skeletonlabs/skeleton'; 
+@import '@skeletonlabs/skeleton-react'; 
+@plugin 'daisyui';
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: rgb(38, 38, 36);
+  --color-base-200: rgb(36, 36, 34);
+  --color-base-300: rgb(49, 49, 46);
+  --color-base-400: rgb(20, 20, 19);
+  --color-base-500: rgb(43, 43, 41);
+  --color-base-600: rgb(31, 30, 29);
+  --color-base-red: rgb(177, 55, 81);
+  --color-outline: hsla(210 70.9% 51.6%);
+  --color-outline-2: rgb(101, 101, 95);
+  --color-base-text: rgb(193, 193, 181);
+  --color-divider: rgb(74, 74, 70);
+  --color-base-content: oklch(97% 0 0);
+  --color-primary: rgb(22, 156, 145);
+  --color-primary-content: oklch(98% 0.014 180.72);
+  --color-secondary: oklch(57% 0.245 27.325);
+  --color-secondary-content: oklch(97% 0.013 17.38);
+  --color-accent: oklch(64% 0.222 41.116);
+  --color-accent-content: oklch(98% 0.016 73.684);
+  --color-neutral: oklch(26% 0 0);
+  --color-neutral-content: oklch(98% 0 0);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(26% 0.051 172.552);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(27% 0.077 45.635);
+  --color-error: oklch(70% 0.191 22.216);
+  --color-error-content: oklch(25% 0.092 26.042);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
+@plugin "daisyui" {
+  themes: light
+}
+
+:root[data-theme='light'] {
+  --color-base-100: rgb(250, 250, 245);
+  --color-base-text: rgb(61, 61, 58);
+  --color-base-400: rgb(222, 222, 217);
+  --color-outline-2: rgb(187, 187, 187);
+  --color-base-content: rgb(20, 20, 19);
+  --color-base-200: rgb(255, 255, 255);
+  --color-base-500: rgb(233, 233, 233);
+  --color-divider: rgb(206, 200, 200);
+  --color-primary: rgb(22, 156, 145);
+}
+
+:root {
+  --color-primary-default: 44, 132, 219;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.shake {
+  animation: shake 0.8s ease-in-out;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  background: currentColor;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.slide-enter {
+  transform: translateX(-20px);
+  opacity: 0.5;
+  scale: 0.95;
+}
+.slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  scale: 1;
+  transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+              opacity 400ms ease,
+              scale 400ms ease;
+}
+
+.slide-exit {
+  transform: translateX(0);
+  opacity: 1;
+  scale: 1;
+}
+.slide-exit-active {
+  transform: translateX(-120%);
+  opacity: 0;
+  scale: 0.9;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 400ms ease,
+              scale 400ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.session-warning {
+  animation: slideDown 0.4s ease forwards;
+}
+
+.merriweather {
+  font-family: "Merriweather", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.raleway {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tooltip-box {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-box::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0s;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.tooltip-box::before {
+  content: '';
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: #1a1a1a;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0s;
+  z-index: 100;
+}
+
+.tooltip-box:hover::after,
+.tooltip-box:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes wave1 {
+  0% { height: 8px; }
+  50% { height: 3px; }
+  100% { height: 6px; }
+}
+@keyframes wave2 {
+  0% { height: 16px; }
+  50% { height: 12px; }
+  100% { height: 14px; }
+}
+@keyframes wave3 {
+  0% { height: 24px; }
+  50% { height: 18px; }
+  100% { height: 21px; }
+}
+
+.animate-wave1 { animation: wave1 1s infinite ease-in-out; }
+.animate-wave2 { animation: wave2 0.5s infinite ease-in-out; }
+.animate-wave3 { animation: wave3 1.5s infinite ease-in-out; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.recents-enter {
+  animation: fadeInUp 0.3s ease both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg ... />");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-2);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-outline-2);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-outline-2) transparent;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fadeUp {
+  animation: fadeUp 0.35s ease both;
+}
